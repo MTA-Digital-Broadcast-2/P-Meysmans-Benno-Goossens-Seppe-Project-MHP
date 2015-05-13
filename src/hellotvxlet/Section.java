@@ -8,19 +8,41 @@ public class Section
 {
     private String name;
     private List articles = new ArrayList();
+    private NewsItem selectedArticle;
     
     public Section(String iName)
     {
-        name = iName;    
+        this.name = iName;
     }
     
-    private Object selectRandomArticle()
+    public List getArticles()
+    {
+        return this.articles;
+    }
+    
+    public NewsItem getSelectedArticle()
+    {
+        return this.selectedArticle;
+    }
+    
+    public void selectRandomArticle()
     {
         Random rndGen = new Random();
         int rnd = rndGen.nextInt(articles.size());
         
-        Object item = articles.get(rnd);
-              
-        return item;
+        Object obj = articles.get(rnd);        
+        NewsItem item = null;
+        
+        if(obj instanceof NewsItem)
+        {
+            item = (NewsItem)obj;
+        }
+        
+        this.selectedArticle = item;
+    }
+    
+    public void addArticle(NewsItem article)
+    {
+        this.articles.add(article);
     }
 }

@@ -49,4 +49,20 @@ public class HelloTVXlet implements Xlet
        scene.validate();
        scene.setVisible(true);
     }
+        
+    //CREATE NEWSITEMS
+    //CREATE SECTIONS
+    //
+    //for(int i = 0; i < sections; i++)
+    //{
+    //  for(int j = 0; j < articles; j++)
+    //  {
+    //      if(articles[j].getSection() == section[i].getName())
+    //      {
+    //          section[i].addArticle(articles[j]);
+    //      }    
+    //  }
+    //
+    //  section[i].selectRandomArticle();
+    //}
 }

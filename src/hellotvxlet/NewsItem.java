@@ -6,16 +6,18 @@ public class NewsItem
 {
     private String name;
     private String desc;
+    private String section;
     private Date publishedDate;
     
-    public NewsItem(String iName, String iDesc, Date iDate)
+    public NewsItem(String iName, String iDesc, String iSection, Date iDate)
     {
         this.name = iName;
         this.desc = iDesc;
+        this.section = iSection;
         this.publishedDate = iDate;
     }
        
-    private String createPreview()
+    public String getPreview()
     {
         String textAr[] = this.desc.split(" ");
         String preview = "";
