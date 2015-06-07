@@ -3,10 +3,11 @@ package hellotvxlet;
 import javax.tv.xlet.*;
 import org.havi.ui.*;
 import org.dvb.ui.*;
-import java.util.Calendar;
+import java.awt.event.*;
+import org.havi.ui.event.*;
 
 
-public class HelloTVXlet implements Xlet 
+public class HelloTVXlet implements Xlet, HActionListener
 {
     private XletContext actueleXletContext;
        
@@ -71,6 +72,7 @@ public class HelloTVXlet implements Xlet
        
        scene.add(knopNextArticle);
        knopNextArticle.requestFocus();
+       knopNextArticle.addHActionListener(this);
 
        
 
@@ -151,6 +153,19 @@ public class HelloTVXlet implements Xlet
     {    
        scene.validate();
        scene.setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent e)
+    {
+        System.out.println(e.getActionCommand());
+        
+        if(e.getActionCommand().equals("knopNextArticle_actioned"))
+        {
+            System.out.println("Next Article");
+            titleArticle.setTextContent(FirstNewsItem.getName(), 0);
+            textArticle.setTextContent(FirstNewsItem.getDesc(), 0);
+            scene.repaint();
+        }
     }
     
         
