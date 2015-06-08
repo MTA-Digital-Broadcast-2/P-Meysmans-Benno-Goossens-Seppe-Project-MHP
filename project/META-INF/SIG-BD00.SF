@@ -1,17 +1,32 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: tNs3YdqHmknZtfZ74g9lnUhO1q8=
+SHA1-Digest-Manifest: LduhbYG5PGvteHlAbQMEQB3I5yM=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: 02gTvsOBFXWBK7VZxJc7dILDOuM=
+SHA1-Digest: H3v7/cDPvbL1dFlJlkF7fB+epzU=
+
+Name: hellotvxlet/HelloTVXlet$1.class
+SHA1-Digest: jL4rl+dtvgbj4VErj8qjkXfGCe4=
+
+Name: hellotvxlet/MijnComponent.class
+SHA1-Digest: POG1685ckaZYeKM6GFbJe/wI4iE=
 
 Name: hellotvxlet/NewsItem.class
 SHA1-Digest: BSPSxo9luaBze4QZ8D8rpbUsu6E=
 
 Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+SHA1-Digest: Iz2EmX/hIvVXbO3PX0e6hezSY28=
+
+Name: spaceship.png
+SHA1-Digest: frtj75ba3ffpQ4XUX6wXnP1WSfI=
 
 Name: hellotvxlet/Section.class
 SHA1-Digest: 5MoyvMnKJMIvECZuUahzTMzMz0g=
+
+Name: sterrenhemel.png
+SHA1-Digest: pr8unmRSStDrtPoLmw5E9hxrDlM=
+
+Name: hellotvxlet/MijnTimerTask.class
+SHA1-Digest: omODsvra1Ot/6whC4swiHeCoUbI=
 

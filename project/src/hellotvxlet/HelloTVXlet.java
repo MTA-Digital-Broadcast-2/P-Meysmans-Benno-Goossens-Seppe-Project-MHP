@@ -14,9 +14,11 @@ public class HelloTVXlet implements Xlet, HActionListener
     private HScene scene;
     private HSceneTemplate sceneTemplate = new HSceneTemplate();
     private boolean debug = true;
+    private Section section = new Section("Nieuws");
     
     private HStaticText titleArticle;
     private HStaticText textArticle;
+    private HStaticText dateArticle;
     private HTextButton knopNextArticle;
     
     private NewsItem FirstNewsItem, SecondNewsItem, ThirdNewsItem, FourthNewsItem, FifthNewsItem;
@@ -46,37 +48,8 @@ public class HelloTVXlet implements Xlet, HActionListener
        
        scene = HSceneFactory.getInstance().getBestScene(sceneTemplate);
        
-       //Artikel
-            titleArticle = new HStaticText("Titel");
-            titleArticle.setLocation(100, 75);
-            titleArticle.setSize(500, 50);
-            titleArticle.setBackground(new DVBColor(0, 0, 0, 179));
-            titleArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
-            
-            textArticle = new HStaticText("Tekst");
-            textArticle.setLocation(50, 175);
-            textArticle.setSize(600, 300);
-            textArticle.setBackground(new DVBColor(0, 0, 0, 179));
-            textArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
-       
-            knopNextArticle = new HTextButton("Volgende artikel");
-            knopNextArticle.setLocation(500, 500);
-            knopNextArticle.setSize(175, 50);
-            knopNextArticle.setBackground(new DVBColor(0, 0, 0, 179));
-            knopNextArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
-            
-       
-       
-       scene.add(titleArticle);
-       scene.add(textArticle);
-       
-       scene.add(knopNextArticle);
-       knopNextArticle.requestFocus();
-       knopNextArticle.addHActionListener(this);
-
-       
-
-        FirstNewsItem = new NewsItem(   "Té enthousiaste naaktfietser aan de kant gezet",
+       //Artikel   
+       FirstNewsItem = new NewsItem(   "Té enthousiaste naaktfietser aan de kant gezet",
                                         "Een deelnemer aan de Naked Bike Ride in het Engelse graafschap Kent trok vorig weekend aan het kortste eind. " +
                                         "Nog voor de eigenlijke start van de naakfietshappening werd de man aan de kant gezet. Bleek dat hij zich iets " +
                                         "te veel had laten meeslepen bij de aanblik van de hem omringende blote mensen. " +
@@ -140,6 +113,49 @@ public class HelloTVXlet implements Xlet, HActionListener
                                        "Amerikaanse altijd nog kiezen voor hairextensions.",
                                        "Vijf",
                                        "2015-05-27");
+       
+       section.addArticle(FirstNewsItem);
+       section.addArticle(SecondNewsItem);
+       section.addArticle(ThirdNewsItem);
+       section.addArticle(FourthNewsItem);
+       section.addArticle(FifthNewsItem);
+              
+           section.selectRandomArticle();
+       
+            titleArticle = new HStaticText(section.getSelectedArticle().getName());
+            titleArticle.setLocation(100, 75);
+            titleArticle.setSize(500, 50);
+            titleArticle.setBackground(new DVBColor(0, 0, 0, 179));
+            titleArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            textArticle = new HStaticText(section.getSelectedArticle().getDesc());
+            textArticle.setLocation(50, 175);
+            textArticle.setSize(600, 300);
+            textArticle.setBackground(new DVBColor(0, 0, 0, 179));
+            textArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+       
+            knopNextArticle = new HTextButton("Volgende artikel");
+            knopNextArticle.setLocation(500, 500);
+            knopNextArticle.setSize(175, 50);
+            knopNextArticle.setBackground(new DVBColor(0, 0, 0, 179));
+            knopNextArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            dateArticle = new HStaticText(section.getSelectedArticle().getDate());
+            dateArticle.setLocation(50, 500);
+            dateArticle.setSize(100, 50);
+            dateArticle.setBackground(new DVBColor(0, 0, 0, 179));
+            dateArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+       scene.add(titleArticle);
+       scene.add(textArticle);
+       scene.add(dateArticle);
+       
+       scene.add(knopNextArticle);
+       knopNextArticle.requestFocus();
+       knopNextArticle.addHActionListener(this);
+
+       
+
         
        scene.repaint();
     }
@@ -161,27 +177,40 @@ public class HelloTVXlet implements Xlet, HActionListener
         
         if(e.getActionCommand().equals("knopNextArticle_actioned"))
         {
-            System.out.println("Next Article");
-            titleArticle.setTextContent(FirstNewsItem.getName(), 0);
-            textArticle.setTextContent(FirstNewsItem.getDesc(), 0);
-            scene.repaint();
+            changeArticle();
         }
     }
     
-        
-    //CREATE NEWSITEMS
-    //CREATE SECTIONS
-    //
-    //for(int i = 0; i < sections; i++)
-    //{
-    //  for(int j = 0; j < articles; j++)
-    //  {
-    //      if(articles[j].getSection() == section[i].getName())
-    //      {
-    //          section[i].addArticle(articles[j]);
-    //      }    
-    //  }
-    //
-    //  section[i].selectRandomArticle();
-    //}
+    public void changeArticle()
+    {
+           System.out.println("Next Article");
+           section.selectRandomArticle();
+           scene.remove(titleArticle);
+           scene.remove(textArticle);
+           scene.remove(dateArticle);
+           
+           titleArticle = new HStaticText(section.getSelectedArticle().getName());
+           titleArticle.setLocation(100, 75);
+           titleArticle.setSize(500, 50);
+           titleArticle.setBackground(new DVBColor(0, 0, 0, 179));
+           titleArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+           textArticle = new HStaticText(section.getSelectedArticle().getDesc());
+           textArticle.setLocation(50, 175);
+           textArticle.setSize(600, 300);
+           textArticle.setBackground(new DVBColor(0, 0, 0, 179));
+           textArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+           dateArticle = new HStaticText(section.getSelectedArticle().getDate());
+           dateArticle.setLocation(50, 500);
+           dateArticle.setSize(100, 50);
+           dateArticle.setBackground(new DVBColor(0, 0, 0, 179));
+           dateArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
+           
+           scene.add(titleArticle);
+           scene.add(textArticle);
+           scene.add(dateArticle);
+           
+           scene.repaint(); 
+    }
 }
