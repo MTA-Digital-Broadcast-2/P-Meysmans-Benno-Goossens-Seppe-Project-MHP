@@ -123,8 +123,8 @@ public class HelloTVXlet implements Xlet, HActionListener
            section.selectRandomArticle();
        
             titleArticle = new HStaticText(section.getSelectedArticle().getName());
-            titleArticle.setLocation(100, 75);
-            titleArticle.setSize(500, 50);
+            titleArticle.setLocation(50, 75);
+            titleArticle.setSize(600, 50);
             titleArticle.setBackground(new DVBColor(0, 0, 0, 179));
             titleArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
@@ -142,7 +142,7 @@ public class HelloTVXlet implements Xlet, HActionListener
             
             dateArticle = new HStaticText(section.getSelectedArticle().getDate());
             dateArticle.setLocation(50, 500);
-            dateArticle.setSize(100, 50);
+            dateArticle.setSize(200, 50);
             dateArticle.setBackground(new DVBColor(0, 0, 0, 179));
             dateArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
@@ -151,12 +151,10 @@ public class HelloTVXlet implements Xlet, HActionListener
        scene.add(dateArticle);
        
        scene.add(knopNextArticle);
+       knopNextArticle.setActionCommand("knopNextArticle_actioned");
        knopNextArticle.requestFocus();
        knopNextArticle.addHActionListener(this);
-
-       
-
-        
+  
        scene.repaint();
     }
 
@@ -183,15 +181,15 @@ public class HelloTVXlet implements Xlet, HActionListener
     
     public void changeArticle()
     {
-           System.out.println("Next Article");
+           System.out.println("Volgend Artikel");
            section.selectRandomArticle();
            scene.remove(titleArticle);
            scene.remove(textArticle);
            scene.remove(dateArticle);
            
            titleArticle = new HStaticText(section.getSelectedArticle().getName());
-           titleArticle.setLocation(100, 75);
-           titleArticle.setSize(500, 50);
+           titleArticle.setLocation(50, 75);
+           titleArticle.setSize(600, 50);
            titleArticle.setBackground(new DVBColor(0, 0, 0, 179));
            titleArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
@@ -203,7 +201,7 @@ public class HelloTVXlet implements Xlet, HActionListener
             
            dateArticle = new HStaticText(section.getSelectedArticle().getDate());
            dateArticle.setLocation(50, 500);
-           dateArticle.setSize(100, 50);
+           dateArticle.setSize(200, 50);
            dateArticle.setBackground(new DVBColor(0, 0, 0, 179));
            dateArticle.setBackgroundMode(HVisible.BACKGROUND_FILL);
            
